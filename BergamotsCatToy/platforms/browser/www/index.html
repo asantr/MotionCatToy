@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css"/>
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="lib/onsen/js/onsenui.js"></script>
+<!-- Uncommenting the lines below can enable / disable the Android Style -->
+    <!--
+        <script>
+            ons.platform.select("android");
+        </script>
+    <!-- -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>Basic BLE</title>
+</head>
+<body>
+
+
+<ons-navigator id="pageNavigator" page="devices.html"></ons-navigator>
+
+<ons-modal id="refreshDevicesModal" animation="fade">
+    <ons-progress-circular indeterminate></ons-progress-circular>
+</ons-modal>
+
+<!-- List of devices page -->
+<ons-template id="devices.html">
+    <ons-page id="devicesPage">
+        <ons-toolbar>
+            <div class="center">Devices</div>
+            <div class="right">
+                <ons-toolbar-button >
+                    <ons-icon icon="ion-refresh" id="refreshButton"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+
+
+       <ons-pull-hook id="pull-hook">
+            Pull to Refresh
+        </ons-pull-hook>
+
+
+        <ons-list id="deviceList">
+
+        </ons-list>
+    </ons-page>
+</ons-template>
+
+
+<!-- Specific device page -->
+<ons-template id="deviceDetails.html">
+    <ons-page id="deviceDetails">
+        <ons-toolbar>
+            <div class="left"><ons-back-button>Back</ons-back-button></div>
+            <div class="center"></div>
+        </ons-toolbar>
+
+        <ons-modal id="connectingModal" animation="fade">
+            Connecting...<br />
+            <ons-progress-circular indeterminate></ons-progress-circular>
+        </ons-modal>
+
+        <!-- create tab bar on bottom with page selections -->
+        <ons-tabbar>
+            <ons-tab label = "Status" page = "tab1.html" active>
+            </ons-tab>
+            <ons-tab  label = "Modes" page = "tab2.html" >
+            </ons-tab>
+            <ons-tab label = "Free Play" page = "tab3.html" >
+            </ons-tab>
+        </ons-tabbar>
+    </ons-page>
+</ons-template>
+    <ons-template id = "tab1.html">
+     <ons-page id = "status">
+        <div id = "table"> 
+            <ons-row>
+                <ons-col id = "catStatCol"> </ons-col>
+            </ons-row>
+            <ons-row>
+                <ons-col id = "statCol"> </ons-col>
+            </ons-row>
+            <br></br>
+        </div>
+
+
+        <ons-button id="onbutton"> ON </ons-button>
+        <ons-button id = "offbutton"> OFF </ons-button>
+
+     </ons-page>
+    </ons-template>
+
+<!-- page for setting color -->
+    <ons-template id="tab2.html">
+        <ons-page id = "modes">
+        <br></br>
+        <div class="center"> Choose a mode for your cat toy!</div>
+        <br></br>
+        <br></br>
+            <ons-button id= "slowButton"> Slow </ons-button>
+             <br></br>
+            <ons-button id= "fastButton"> Fast </ons-button>
+             <br></br>
+            <ons-button id= "randomButton"> Random </ons-button>
+        </ons-page>
+    </ons-template>
+<!-- page for entering the seconds to turn on or off in -->
+    <ons-template id ="tab3.html">
+        <ons-page id = "freeplay">
+        <br></br>
+        <div class="center"> Free Play! Press the following buttons to tease your cat! </div>
+
+        <br></br>
+        <br></br>
+            <ons-button id= "leftButton"> Left </ons-button>
+             <br></br>
+            <ons-button id= "rightButton"> Right </ons-button>
+             <br></br>
+            <ons-button id= "circleButton"> Circle </ons-button>
+        </ons-page>
+    </ons-template>
+</body>
+</html>
